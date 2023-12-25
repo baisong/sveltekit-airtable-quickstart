@@ -1,7 +1,8 @@
 import Airtable from 'airtable';
-import { env } from '$env/dynamic/private';
+import { VITE_AIRTABLE_BASE_ID } from '$env/static/private';
+import { AIRTABLE_KEY } from '$env/static/private';
 
-const myBaseId = import.meta.env.VITE_AIRTABLE_BASE_ID;
+const myBaseId = VITE_AIRTABLE_BASE_ID;
 
 const myBaseConfig = {
     tableName: 'Organizations',
@@ -22,7 +23,7 @@ const myBaseConfig = {
 function setupBase(baseId) {
     Airtable.configure({
         endpointUrl: 'https://api.airtable.com',
-        apiKey: env.AIRTABLE_KEY
+        apiKey: AIRTABLE_KEY
     });
     var base = Airtable.base(baseId);
 
